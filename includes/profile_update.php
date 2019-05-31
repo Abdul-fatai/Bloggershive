@@ -33,14 +33,17 @@ $id = $_SESSION['u_id'];
 				exit();
 
 			} else {
-				echo "Your file is too big";
+				header("Location: ../profile.php?id=".$id."&file=toobig");
+				exit();
 			}
 		}else{
-			echo "There was an error uploading your file";
+			header("Location: ../profile.php?id=".$i."&file=error");
+			exit();
 		}
 		
 	} else{
-		echo "You cannot upload files of this type";
+		header("Location: ../profile.php?id=".$id."&file=notthsitype");
+		exit();
 	}
 
 

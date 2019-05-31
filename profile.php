@@ -41,27 +41,47 @@ if (isset($_SESSION['u_id'])) {
 
   if (isset($row)) {
     $user_id = $row['id']; 
-      echo "
+      ?>
   <div class='row'>
     <div class='col-md-3 profile'>
-       <aside>
-          <img  class='img-circle' src='profile_imgs/".$row['profile_img']."' alt='profile_img' width='110px' height='100px'>
-              <h3><b>".$row['username']."</b><sup style='color: red;'><i> (".$row['status'].")</i></sup></h3>
+       <aside> 
+          <img  class='img-circle' src='profile_imgs/<?= $row["profile_img"] ?>' alt='profile_img' width='110px' height='100px'>
+              <h3><b><?= $row['username'] ?></b><sup style='color: red;'><i> (<?= $row['status'] ?>)</i></sup></h3>
 
       
                 <form action='includes/profile_update.php' method='POST' enctype='multipart/form-data'>
-                    <input type='file'  name='file' class=' btn btn-default col-md-8 ' required>
+                  <?php 
+                    if (isset($_GET['file'])) {
+                      if ($_GET['file'] == "toobig") {
+                        echo "<p class='alert-danger'>This file is too big</p>";
+                      }
+                    }
+
+                    if (isset($_GET['file'])) {
+                      if ($_GET['file'] == "notthsitype") {
+                        echo "<p class='alert-danger'>You cannot upload file of this type</p>";
+                      }
+                    }
+
+                    if (isset($_GET['file'])) {
+                      if ($_GET['file'] == "error") {
+                        echo "<p class='alert-danger'>There was an error uploading your file</p>";
+                      }
+                    }
+                  ?>
+                    <input type='file'  name='file' class=' btn btn-default col-md-8 '>
                       <button type='submit' name='profile_update' class='btn btn-default pull-right'>Update</button>
                </form>
              <br> <br>
         </aside>
-  ";
+  <?php 
 
   $user_type = $row['status'];
     if ($user_type != 'Admin') {
       echo "";
     }else {
-      echo "<h4><a href='post_approve.php' class=' btn-link'><b>Approve post page</b></a></h4>";
+      echo "<h4><a href='post_approve.php' class=' btn-link'><b>Approve post page</b></a></h4>
+      <h4><a href='addtag.php' class=' btn-link'><b>Add tag</b></a></h4>";
     }
   }
 
@@ -85,23 +105,31 @@ if (isset($_SESSION['u_id'])) {
 if (mysqli_num_rows($result) > 0) {
   while ($rows = mysqli_fetch_assoc($result)) {
     $Status = $rows['status'];
-    echo "
+    ?>
   <div class='col-md-6'>
     <div class='cover'>
         <article>
-          <a href='article.php?post_id=".$rows['post_id']."&subject=".$rows['subject']."&post_date=".$rows['post_date']."'><h4><b>".$rows['subject']."</h4></a>
-       <div class='text-success'>".$Status."</div>
-          <small class='pull-left'>".$rows['author']."</small>
-            <small class='pull-right'>".$rows['post_date']."</b></small><br>
+          <a href='article.php?post_id=<?= $rows['post_id'] ?>&subject=<?=$rows['subject'] ?>&post_date=<?= $rows['post_date']?>'><h4><b><?= $rows['subject'] ?></h4></a>
+            <?php
+              if ($Status != "Approved") {
+                 echo "<div class='alert-danger'>".$Status."</div>";
+               }  else {
+                echo "<div class='alert-success'>".$Status."</div>";
+               }
+            ?>
+       
+          <small class='pull-left'><?= $rows['author'] ?></small>
+            <small class='pull-right'><?= $rows['post_date'] ?></b></small><br>
      
-  <div class=' article-text'>".$rows['content']."</div>
-        <a href='article.php?post_id=".$rows['post_id']."&subject=".$rows['subject']."&post_date=".$rows['post_date']."' class='btn btn-primary btn-sm'>Read more</a>
-          <a href= 'post_edit.php?post_id=".$rows['post_id']."'  class='pull-right btn btn-primary'>Edit post</a><br>
+        <div class=' article-text'><?= $rows['content'] ?></div>
+        <a href='article.php?post_id=<?= $rows['post_id'] ?>&subject=<?=$rows['subject'] ?>&post_date=<?= $rows['post_date']?>' class='btn btn-primary btn-sm'>Read more</a>
+          <a href= 'post_edit.php?post_id=<?= $rows['post_id'] ?>'  class='pull-right btn btn-primary'>Edit post</a><br>
         <label class='label label-default'>Tech</label>
     
     </div>
     </div>
-     </article>";
+     </article>
+    <?php 
   }
 }
 

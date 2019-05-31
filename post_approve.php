@@ -7,8 +7,8 @@ include_once 'includes/dbh.php';
 <?php
 
 
-    if (!isset($_SESSION['u_id'])) {
-      header("Location: index.php");
+    if ($_SESSION['u_status'] != "Admin") {
+        header("Location: index.php");
     }
 
 
@@ -40,7 +40,7 @@ include_once 'includes/dbh.php';
        echo 
   "<div class='cover'>
     <article>
-      <h3><b>".$row['subject']."</b></h3>
+      <h3><b><a href='article.php?post_id=".$row['post_id']."'>".$row['subject']."</a></b></h3>
       <small class='pull-left'><b>".$row['author']."</small>
       <small class='pull-right'><b>".$row['post_date']."</small><br>
       <div class='article-text lead'>".$row['content']." </div>

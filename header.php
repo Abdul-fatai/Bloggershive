@@ -55,7 +55,7 @@ if(!isset($active)) {
       
 
       if (isset($row)) {
-        echo "<a href='profile.php?id=".$row['id']."'><img src='profile_imgs/".$row['profile_img']."' class='img-circle' title='profile' width='50' height= '50'></a>";
+        echo "<a href='profile.php?id=".$row['id']."'><img src='profile_imgs/".$row['profile_img']."?".mt_rand()."' class='img-circle' title='profile' width='50' height= '50'></a>";
       }else{ 
         echo "<a class='navbar-brand' href='index.php'>Bloggers Hive</a>";
       }

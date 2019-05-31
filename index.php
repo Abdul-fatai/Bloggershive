@@ -38,7 +38,7 @@ include_once 'includes/dbh.php';
       <a href='article.php?post_id=<?php echo$row['post_id'] ?>&subject=<?php echo$row['subject'] ?>&post_date=<?php echo$row['post_date'] ?>'><h4><b><?php echo$row['subject'] ?></h4></a>
       <small class='pull-left'><?= $row['author'] ?></small>
       <small class='pull-right'><?= $row['post_date'] ?></b></small><br>
-      <div class=' article-text'><?= $row['content'] ?></div>
+      <div class=' article-text'><?= nl2br($row['content']) ?></div>
       <a href='article.php?post_id=<?php echo$row['post_id'] ?>&subject=<?php echo$row['subject'] ?>&post_date=<?php echo$row['post_date'] ?>' class='btn btn-primary btn-sm'>Read more</a><br>
 
         <label class='label label-default'><?= $row['label'] ?></label>

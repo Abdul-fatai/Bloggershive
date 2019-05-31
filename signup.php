@@ -11,9 +11,15 @@ if (isset($_SESSION['u_id'])) {
   <div class="mg">
   <form class="form-signin" action="includes/signup.inc.php" method="POST" enctype="multipart/form-data">
     <h1 class="text-center"><b>Sign up</h1>
-    
-    <label> Firstname</label>
-    <input type="text" name="fname" class="form-control" placeholder="Firstname" autofocus>
+       <label> Firstname</label>
+    <?php 
+      if (isset($_GET['fname'])) {
+        $first = $_GET['fname'];
+          echo '<input type="text" name="fname" class="form-control" placeholder="Firstname"  value="'.$first.'" autofocus>';
+      } else {
+        echo '<input type="text" name="fname" class="form-control" placeholder="Firstname" autofocus>';
+      }
+    ?>
     <?php 
     if (isset($_GET['input'])) {
       if ($_GET['input'] == "emptyfirstname") {
@@ -25,7 +31,15 @@ if (isset($_SESSION['u_id'])) {
 
     
     <label>Lastname</label>
-    <input type="text" name="lname" class="form-control" placeholder="Lastname">
+    <?php 
+      if (isset($_GET['lname'])) {
+        $last = $_GET['lname'];
+          echo '<input type="text" name="lname" class="form-control"  value="'.$last.'" placeholder="Lastname">';
+      } else {
+        echo '<input type="text" name="lname" class="form-control" placeholder="Lastname">';
+      }
+    ?>
+    
     <?php 
     if (isset($_GET['input'])) {
       if ($_GET['input'] == "emptylastname") {
@@ -36,7 +50,15 @@ if (isset($_SESSION['u_id'])) {
     ?>
 
     <label>Username</label>
-    <input type="text" name="uid" class="form-control" placeholder="Username">
+     <?php 
+      if (isset($_GET['uid'])) {
+        $username = $_GET['uid'];
+          echo ' <input type="text" name="uid" class="form-control" value="'.$username.'" placeholder="Username">';
+      } else {
+        echo ' <input type="text" name="uid" class="form-control" placeholder="Username">';
+      }
+    ?>
+   
     <?php 
 
     if (isset($_GET['input'])) {
@@ -56,13 +78,19 @@ if (isset($_SESSION['u_id'])) {
 
     
     <label> Email</label>
-    <input type="Email" name="email" class="form-control" placeholder="Email">
+    <input type="text" name="email" class="form-control" placeholder="Email">
     <?php 
     if (isset($_GET['input'])) {
       if ($_GET['input'] == "emptyemail") {
         echo "<p class='text-danger'>This field is required</p>";
       }
     }
+    if (isset($_GET['email'])) {
+      if ($_GET['email'] == "invalidemail") {
+        echo "<p class='text-danger'>Email invalid</p>";
+      }
+    }
+
 
     ?>
    

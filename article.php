@@ -46,7 +46,7 @@ if (isset($_SESSION['u_id'])) {
       <h3><b>".$row['subject']."</h3>
        <small class='pull-left'>".$row['author']."</small>
       <small class='pull-right'>".$row['post_date']."</b></small><br>
-      <div class='lead'>".$row['content']."</div>
+      <div class='lead'>".nl2br($row['content'])."</div>
     </article>
   
     <p><b>Share this post:</b> </p>

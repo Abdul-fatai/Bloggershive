@@ -6,7 +6,7 @@ $active = 'privacy';
  
 <div class="container">
   <div class=" cover jumbotron">
-  	<h1><b>Privacy</b></h1>
+  	<h2><b>Privacy</b></h2>
   	<p style="font-size: 20px">Loremp impsus is a generated random text. Loremp impsus is a generated random text. Loremp impsus is a generated random text. Loremp impsus is a generated random text. Loremp impsus is a generated random text. Loremp impsus is a generated random text. Loremp impsus is a generated random text. Loremp impsus is a generated random text. Loremp impsus is a generated random text. Loremp impsus is a generated random text.Loremp impsus is a generated random text. Loremp impsus is a generated random text. Loremp impsus is a generated random text. Loremp impsus is a generated random text. Loremp impsus is a generated random text.Loremp impsus is a generated random text. Loremp impsus is a generated random text. Loremp impsus is a generated random text. Loremp impsus is a generated random text. Loremp impsus is a generated random text.Loremp impsus is a generated random text. Loremp impsus is a generated random text. Loremp impsus is a generated random text. Loremp impsus is a generated random text. Loremp impsus is a generated random text.Loremp </p>
   </div>
  

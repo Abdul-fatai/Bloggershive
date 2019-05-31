@@ -36,8 +36,6 @@
      </p>
      <p>
     <input type='hidden' value='".$post_id."' name='post_id'> 
-    </p>
-
     <p>
       <label>Content</label>
       <textarea class='form-control' name='message' style='width: 100%; height: 200px;' name='massage'  required >".$rows['content']."</textarea>

@@ -47,6 +47,7 @@ if (isset($_POST['submit'])) {
 		exit();
 	}elseif(empty($cpwd)){
 		header("Location: ../signup.php?input=emptycpwd");
+		exit();
 	} else{
 		// check if input character are valid
 		if (!preg_match("/^[a-zA-Z]*/", $fname) || !preg_match("/^[a-zA-Z]*/", $lname) || !preg_match("/^[a-zA-Z]*/", $username)) {
@@ -54,7 +55,7 @@ if (isset($_POST['submit'])) {
 			exit();
 		}else{
 			if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-				header("Location: ../signup.php?email=invalidemail");
+				header("Location: ../signup.php?email=invalidemail&fname=$fname&lname=$lname&uid=$username");
 				exit();
 			}else{
 				$sql = "SELECT * FROM users WHERE username='$username'";

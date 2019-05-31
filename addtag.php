@@ -1,6 +1,9 @@
 <?php
   include_once 'header2.php';
 
+  if ($_SESSION['u_status'] != "Admin") {
+      header("Location: index.php");
+  }
 ?> 
 <div class="container">
   <div class="bg">

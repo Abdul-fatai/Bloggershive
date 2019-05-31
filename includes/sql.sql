@@ -22,6 +22,7 @@ CREATE TABLE posts (
     author varchar(255) not null,
     status varchar(50) not null,
     post_date Datetime
+    post_edit_at Datetime
     
 );
 
